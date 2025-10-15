@@ -1,51 +1,51 @@
-# 🎉 Reorganización Completada
+# 🎉 Reorganization Completed
 
-## 📊 Resumen de Cambios
+## 📊 Summary of Changes
 
-### ✅ Nueva Estructura de Carpetas
+### ✅ New Folder Structure
 
 ```
 clean/
-├── 📄 index.html              ← HTML principal
-├──  README.md               ← Documentación principal
-├── 🙈 .gitignore              ← Configuración Git
+├── 📄 index.html              ← Main HTML
+├──  README.md               ← Main documentation
+├── 🙈 .gitignore              ← Git configuration
 │
-├── 📂 src/                    ← CÓDIGO FUENTE
-│   ├── � main.js             ← Punto de entrada
-│   ├── �📂 core/               ← Clases principales del juego
-│   │   ├── App.js            ← Aplicación Three.js
-│   │   └── TetrisGame.js     ← Lógica del Tetris
+├── 📂 src/                    ← SOURCE CODE
+│   ├── � main.js             ← Entry point
+│   ├── �📂 core/               ← Main game classes
+│   │   ├── App.js            ← Three.js application
+│   │   └── TetrisGame.js     ← Tetris logic
 │   │
-│   ├── 📂 scenes/             ← Escenas 3D
-│   │   └── IdleScene.js      ← Cubos flotantes
+│   ├── 📂 scenes/             ← 3D scenes
+│   │   └── IdleScene.js      ← Floating cubes
 │   │
-│   └── 📂 managers/           ← Gestores de estado
-│       └── GameStateManager.js ← Estados del juego
+│   └── 📂 managers/           ← State managers
+│       └── GameStateManager.js ← Game states
 │
-├── 📂 assets/                 ← RECURSOS
-│   ├── 📂 images/             ← Imágenes y texturas
+├── 📂 assets/                 ← RESOURCES
+│   ├── 📂 images/             ← Images and textures
 │   │   ├── cube.png
 │   │   ├── logo.png
 │   │   └── union-logo-*.svg
 │   │
-│   └── 📂 audio/              ← Audio y música
-│       └── 📂 midiplayer/     ← Sistema MIDI
+│   └── 📂 audio/              ← Audio and music
+│       └── 📂 midiplayer/     ← MIDI system
 │           ├── dance.mid
 │           ├── MIDIFile.js
 │           ├── MIDIPlayer.js
 │           └── WebAudioFontPlayer.js
 │
-└── 📂 docs/                   ← DOCUMENTACIÓN
-   └── 📂 LOG/                ← Historial y respaldos
+└── 📂 docs/                   ← DOCUMENTATION
+   └── 📂 LOG/                ← History and backups
       ├── REORGANIZACION.md
       ├── ESTRUCTURA.md
       ├── README-old.md
       └── ...
 ```
 
-## 🔄 Archivos Migrados
+## 🔄 Migrated Files
 
-### Código Fuente → `src/`
+### Source Code → `src/`
 - ✅ `App.js` → `src/core/App.js`
 - ✅ `TetrisGame.js` → `src/core/TetrisGame.js`
 - ✅ `IdleScene.js` → `src/scenes/IdleScene.js`

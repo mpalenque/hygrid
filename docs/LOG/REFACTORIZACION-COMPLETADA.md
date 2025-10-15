@@ -1,23 +1,23 @@
-# ✨ Refactorización Completada
+# ✨ Refactoring Completed
 
-## 🎯 Resumen Ejecutivo
+## 🎯 Executive Summary
 
-**Objetivo:** Refactorizar `index.html` para hacerlo más profesional, mantenible y entendible.
+**Objective:** Refactor `index.html` to make it more professional, maintainable and understandable.
 
-**Resultado:** ✅ Código modular, organizado y con separación de responsabilidades.
+**Result:** ✅ Modular code, organized with separation of concerns.
 
 ---
 
-## 📊 Métricas de Mejora
+## 📊 Improvement Metrics
 
-| Métrica | Antes | Ahora | Mejora |
-|---------|-------|-------|--------|
-| **Líneas en index.html** | 1062 | 145 | **-86%** |
-| **CSS embebido** | 600+ líneas | 0 | **-100%** |
-| **JS embebido** | 400+ líneas | 50 | **-87%** |
-| **Archivos CSS** | 0 | 3 | +3 módulos |
-| **Controladores JS** | 0 | 2 | +2 clases |
-| **Carpetas en src/** | 3 | 6 | +3 categorías |
+| Metric | Before | Now | Improvement |
+|---------|-------|-----|-------------|
+| **Lines in index.html** | 1062 | 145 | **-86%** |
+| **Embedded CSS** | 600+ lines | 0 | **-100%** |
+| **Embedded JS** | 400+ lines | 50 | **-87%** |
+| **CSS Files** | 0 | 3 | +3 modules |
+| **JS Controllers** | 0 | 2 | +2 classes |
+| **Folders in src/** | 3 | 6 | +3 categories |
 
 ---
 
@@ -49,17 +49,17 @@ clean/
 │   ├── 📂 audio/ ✨ NUEVO              ← Controladores Audio
 │   │   └── AudioController.js
 │   │
-│   └── 📂 styles/ ✨ NUEVO             ← Estilos CSS
-│       ├── main.css                    ← Base + animaciones
+│   └── 📂 styles/ ✨ NEW               ← CSS styles
+│       ├── main.css                    ← Base + animations
 │       ├── ui.css                      ← Header + footer
-│       └── overlays.css                ← Pantallas + efectos
+│       └── overlays.css                ← Screens + effects
 │
 ├── 📂 assets/
 │   ├── 📂 images/
 │   │   ├── cube.png
 │   │   ├── logo.png
-│   │   ├── powerupboard.svg ✨ USADO
-│   │   ├── levelup.svg ✨ USADO
+│   │   ├── powerupboard.svg ✨ USED
+│   │   ├── levelup.svg ✨ USED
 │   │   └── union-logo-*.svg
 │   │
 │   └── 📂 audio/
@@ -71,83 +71,83 @@ clean/
 │
 └── 📂 docs/
     └── 📂 LOG/
-        ├── REFACTORIZACION-HTML-CSS.md ✨ NUEVO
+        ├── REFACTORIZACION-HTML-CSS.md ✨ NEW
         ├── REORGANIZACION.md
         ├── ESTRUCTURA.md
-        └── ... (otros)
+        └── ... (others)
 ```
 
 ---
 
-## 🎨 Archivos Creados
+## 🎨 Created Files
 
 ### CSS (src/styles/)
-1. **main.css** (93 líneas)
-   - Reset CSS
-   - Canvas Three.js
-   - 8 animaciones keyframes globales
+1. **main.css** (93 lines)
+   - CSS Reset
+   - Three.js Canvas
+   - 8 global keyframe animations
 
-2. **ui.css** (243 líneas)
+2. **ui.css** (243 lines)
    - UI Overlay container
-   - Header con zonas de color
-   - Footer con score/logo/level
-   - Sistema de llenado del logo
+   - Header with color zones
+   - Footer with score/logo/level
+   - Logo filling system
 
-3. **overlays.css** (245 líneas)
-   - Pantallas: idle, intro, gameover, scoreboard
-   - Power-up overlay (sin fondo oscuro) ✨
-   - Level-up overlay (con fondo) ✨
+3. **overlays.css** (245 lines)
+   - Screens: idle, intro, gameover, scoreboard
+   - Power-up overlay (no dark background) ✨
+   - Level-up overlay (with background) ✨
    - Bonus flash effect
 
 ### JavaScript (src/)
-4. **ui/UIController.js** (137 líneas)
-   - Clase `UIController`
-   - 8 métodos públicos
-   - Auto-exportación a `window`
+4. **ui/UIController.js** (137 lines)
+   - `UIController` class
+   - 8 public methods
+   - Auto-export to `window`
    - Responsive scaling
 
-5. **audio/AudioController.js** (253 líneas)
-   - Clase `AudioController`
+5. **audio/AudioController.js** (253 lines)
+   - `AudioController` class
    - MIDI player management
-   - 6 efectos de sonido 8-bit
+   - 6 8-bit sound effects
    - Auto-debug system
 
 ---
 
-## ✨ Mejoras Específicas
+## ✨ Specific Improvements
 
 ### 1. Power-Up Overlay
-**Problema:** Fondo oscuro invasivo, diseño genérico
-**Solución:**
+**Problem:** Invasive dark background, generic design
+**Solution:**
 ```css
 #powerup-overlay {
-  background: transparent !important;  /* ✅ Sin fondo oscuro */
-  padding-top: 35%;                    /* ✅ Hacia abajo */
+  background: transparent !important;  /* ✅ No dark background */
+  padding-top: 35%;                    /* ✅ Downward position */
 }
 ```
-- ✅ Usa `powerupboard.svg` (440x109px)
-- ✅ Sin fondo oscuro
-- ✅ Posicionado 35% desde arriba
-- ✅ Sombra amarilla brillante
-- ✅ Duración: 2 segundos
+- ✅ Uses `powerupboard.svg` (440x109px)
+- ✅ No dark background
+- ✅ Positioned 35% from top
+- ✅ Bright yellow shadow
+- ✅ Duration: 2 seconds
 
 ### 2. Level-Up Overlay
-**Problema:** Centrado exacto, diseño básico
-**Solución:**
+**Problem:** Exact centering, basic design
+**Solution:**
 ```css
 #levelup-overlay {
-  background: rgba(0, 0, 0, 0.7);     /* ✅ Fondo semi-transparente */
-  padding-top: 35%;                    /* ✅ Hacia abajo */
+  background: rgba(0, 0, 0, 0.7);     /* ✅ Semi-transparent background */
+  padding-top: 35%;                    /* ✅ Downward position */
 }
 ```
-- ✅ Usa `levelup.svg` (428x108px)
-- ✅ Fondo oscuro para destacar
-- ✅ Posicionado 35% desde arriba
-- ✅ Sombra brillante
-- ✅ Duración: 2 segundos
+- ✅ Uses `levelup.svg` (428x108px)
+- ✅ Dark background to highlight
+- ✅ Positioned 35% from top
+- ✅ Bright shadow
+- ✅ Duration: 2 seconds
 
-### 3. Separación HTML/CSS/JS
-**Antes:**
+### 3. HTML/CSS/JS Separation
+**Before:**
 ```html
 <style>
   /* 600+ líneas de CSS */

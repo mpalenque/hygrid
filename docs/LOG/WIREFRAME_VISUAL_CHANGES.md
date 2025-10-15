@@ -1,53 +1,53 @@
-# 🔲 CAMBIOS VISUALES APLICADOS
+# 🔲 APPLIED VISUAL CHANGES
 
-## 📋 RESUMEN DE MODIFICACIONES
+## 📋 SUMMARY OF MODIFICATIONS
 
-Se aplicaron **2 cambios visuales importantes** para mejorar la estética del juego:
+**2 important visual changes** were applied to improve the game's aesthetics:
 
 ---
 
-## 🔗 CAMBIO 1: Cubos Wireframe (Solo Aristas)
+## 🔗 CHANGE 1: Wireframe Cubes (Edges Only)
 
-### ✅ Implementación:
+### ✅ Implementation:
 
-**Modificado en:** `/clean/game.js` - función `createMaterials()` (líneas 340-375)
+**Modified in:** `/clean/game.js` - `createMaterials()` function (lines 340-375)
 
-### 🔍 ANTES (Cubos sólidos):
+### 🔍 BEFORE (Solid cubes):
 ```javascript
 this.redMaterial = new THREE.MeshStandardMaterial({
     color: 0xcf4526,
     emissive: 0xcf4526,
     emissiveIntensity: 0.4,
     metalness: 0.5,
-    roughness: 0.5  // Cubos sólidos
+    roughness: 0.5  // Solid cubes
 });
 ```
 
-### ✅ DESPUÉS (Solo aristas):
+### ✅ AFTER (Edges only):
 ```javascript
 this.redMaterial = new THREE.MeshStandardMaterial({
     color: 0xcf4526,
     emissive: 0xcf4526,
     emissiveIntensity: 0.6,
-    wireframe: true,      // 🔲 Solo aristas
-    transparent: true,    // 👻 Caras transparentes
-    opacity: 0.8         // 🌟 Ligera transparencia
+    wireframe: true,      // 🔲 Edges only
+    transparent: true,    // 👻 Transparent faces
+    opacity: 0.8         // 🌟 Slight transparency
 });
 ```
 
-### 📊 Propiedades de cada material:
+### 📊 Properties of each material:
 
-| Material | Emisión | Opacidad | Estilo |
-|----------|---------|----------|--------|
-| **Rojo** | 0.6 | 0.8 | Wireframe brillante |
-| **Azul** | 0.6 | 0.8 | Wireframe brillante |
-| **Verde** | 0.6 | 0.8 | Wireframe brillante |
-| **Gris** | 0.4 | 0.6 | Wireframe tenue |
-| **Amarillo** | 0.8 | 0.9 | Wireframe muy brillante |
+| Material | Emission | Opacity | Style |
+|----------|----------|---------|--------|
+| **Red** | 0.6 | 0.8 | Bright wireframe |
+| **Blue** | 0.6 | 0.8 | Bright wireframe |
+| **Green** | 0.6 | 0.8 | Bright wireframe |
+| **Gray** | 0.4 | 0.6 | Dim wireframe |
+| **Yellow** | 0.8 | 0.9 | Very bright wireframe |
 
-### 🎨 Resultado visual:
-- ✅ Solo se ven las **aristas de los cubos**
-- ✅ **Caras completamente transparentes**
+### 🎨 Visual result:
+- ✅ Only the **cube edges** are visible
+- ✅ **Faces completely transparent**
 - ✅ Efecto **neón brillante** en las aristas
 - ✅ Diferentes intensidades según el color
 - ✅ El **amarillo es más brillante** (modo bonus)

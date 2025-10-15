@@ -1,53 +1,53 @@
-# Refactorización del Código - Tetris Game
+# Code Refactoring - Tetris Game
 
-## ✅ Archivos Creados
+## ✅ Created Files
 
-### 1. **GameStateManager.js** (290 líneas)
-Gestiona todos los estados del juego:
-- Estados: idle, intro, playing, gameover
-- Transiciones entre pantallas
-- Sistema de puntuaciones (localStorage)
-- Countdown de inicio
+### 1. **GameStateManager.js** (290 lines)
+Manages all game states:
+- States: idle, intro, playing, gameover
+- Screen transitions
+- Scoring system (localStorage)
+- Start countdown
 - Scoreboard
 
-### 2. **IdleScene.js** (227 líneas)
-Escena de cubos flotantes en modo idle:
-- Creación de cubos con wireframe
-- Sistema de grilla 3D
-- Animación de scroll continuo
-- Cámara con rotación suave
-- Manejo de visibilidad del grid de fondo
+### 2. **IdleScene.js** (227 lines)
+Floating cubes scene in idle mode:
+- Wireframe cube creation
+- 3D grid system
+- Continuous scroll animation
+- Camera with smooth rotation
+- Background grid visibility handling
 
-### 3. **TetrisGame.js** (1047 líneas)
-Lógica principal del juego Tetris:
-- Tablero y piezas
-- Sistema de colores por zonas
-- Detección de colisiones
-- Sistema de puntuación
-- Modo amarillo (power-up)
-- Efectos de flash
-- Limpieza de líneas
-- Sistema de niveles
+### 3. **TetrisGame.js** (1047 lines)
+Main Tetris game logic:
+- Board and pieces
+- Zone color system
+- Collision detection
+- Scoring system
+- Yellow mode (power-up)
+- Flash effects
+- Line clearing
+- Level system
 
-### 4. **App.js** (93 líneas)
-Aplicación principal que orquesta todo:
-- Configuración de THREE.js (scene, camera, renderer)
-- Iluminación
-- Inicialización de clases
-- Loop de animación principal
-- Manejo de input
+### 4. **App.js** (93 lines)
+Main application that orchestrates everything:
+- THREE.js configuration (scene, camera, renderer)
+- Lighting
+- Class initialization
+- Main animation loop
+- Input handling
 
-### 5. **game-new.js** (3 líneas)
-Punto de entrada que inicia la aplicación
+### 5. **game-new.js** (3 lines)
+Entry point that starts the application
 
-## 📊 Comparación
+## 📊 Comparison
 
-**ANTES:**
-- 1 archivo: `game.js` (1665 líneas)
+**BEFORE:**
+- 1 file: `game.js` (1665 lines)
 
-**DESPUÉS:**
-- 5 archivos modulares (total: 1660 líneas)
-  - GameStateManager.js: 290 líneas
+**AFTER:**
+- 5 modular files (total: 1660 lines)
+  - GameStateManager.js: 290 lines
   - IdleScene.js: 227 líneas
   - TetrisGame.js: 1047 líneas
   - App.js: 93 líneas

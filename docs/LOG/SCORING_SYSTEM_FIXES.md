@@ -1,52 +1,52 @@
-# 🎯 CORRECCIONES AL SISTEMA DE PUNTAJES
+# 🎯 SCORING SYSTEM FIXES
 
-## 📊 PROBLEMAS ENCONTRADOS Y CORREGIDOS
+## 📊 PROBLEMS FOUND AND CORRECTED
 
-Después de comparar `/clean/game.js` con el código original en `/src/scripts/TetrisGame.ts`, 
-encontré **3 diferencias críticas** en el sistema de puntajes que hacían que el juego 
-diera muchos menos puntos de lo esperado.
+After comparing `/clean/game.js` with the original code in `/src/scripts/TetrisGame.ts`, 
+I found **3 critical differences** in the scoring system that made the game 
+give much fewer points than expected.
 
 ---
 
-## ❌ PROBLEMA 1: Faltaban puntos por bloques bien colocados
+## ❌ PROBLEM 1: Missing points for correctly placed blocks
 
-### 🔍 En el original (TetrisGame.ts líneas 714-717):
+### 🔍 In the original (TetrisGame.ts lines 714-717):
 ```typescript
-// Dar 100 puntos por cada bloque colocado en color correcto
+// Give 100 points for each block placed in correct color
 if (correctColorBlocks > 0) {
     this.addScore(correctColorBlocks * 100);
-    console.log(`💰 +${correctColorBlocks * 100} puntos por bloques en color correcto`);
+    console.log(`💰 +${correctColorBlocks * 100} points for blocks in correct color`);
 }
 ```
 
-### ❌ En /clean/game.js ANTES:
+### ❌ In /clean/game.js BEFORE:
 ```javascript
-// NO existía este código
-// Los bloques bien colocados NO daban puntos
+// This code did NOT exist
+// Correctly placed blocks gave NO points
 ```
 
-### ✅ CORREGIDO en /clean/game.js:
+### ✅ FIXED in /clean/game.js:
 ```javascript
-// SISTEMA DE PUNTAJE: 100 puntos por cada bloque bien colocado
+// SCORING SYSTEM: 100 points for each correctly placed block
 if (correctColorBlocks > 0) {
     this.addScore(correctColorBlocks * 100);
-    console.log(`💰 +${correctColorBlocks * 100} puntos por bloques correctos`);
+    console.log(`💰 +${correctColorBlocks * 100} points for correct blocks`);
 }
 ```
 
-**Impacto:**
-- Pieza de 2 bloques bien colocada: +200 puntos
-- Pieza de 3 bloques bien colocada: +300 puntos
-- Pieza de 4 bloques bien colocada: +400 puntos
+**Impact:**
+- 2-block piece correctly placed: +200 points
+- 3-block piece correctly placed: +300 points
+- 4-block piece correctly placed: +400 points
 
 ---
 
-## ❌ PROBLEMA 2: Puntos por línea completada incorrectos
+## ❌ PROBLEM 2: Incorrect points per completed line
 
-### 🔍 En el original (TetrisGame.ts línea 744):
+### 🔍 In the original (TetrisGame.ts line 744):
 ```typescript
 if (linesCleared > 0) {
-    // 500 puntos por cada línea completada
+    // 500 points for each completed line
     this.addScore(500 * linesCleared);
     console.log(`✨ ${linesCleared} líneas completas eliminadas! +${500 * linesCleared} puntos - Total: ${this.lines}`);
 }

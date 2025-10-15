@@ -1,39 +1,39 @@
-# 🎨 Refactorización HTML/CSS - Estructura Profesional
+# 🎨 HTML/CSS Refactoring - Professional Structure
 
-## 📋 Resumen de Cambios
+## 📋 Summary of Changes
 
-### ✅ Separación de Responsabilidades
+### ✅ Separation of Concerns
 
-**Antes:** Todo en `index.html` (1062 líneas)
-**Ahora:** Código modular organizado
+**Before:** Everything in `index.html` (1062 lines)
+**Now:** Organized modular code
 
 ```
-index.html          → 140 líneas (solo estructura HTML)
-src/styles/         → 3 archivos CSS especializados
-src/ui/             → UIController.js (manejo de UI)
-src/audio/          → AudioController.js (audio y MIDI)
+index.html          → 140 lines (HTML structure only)
+src/styles/         → 3 specialized CSS files
+src/ui/             → UIController.js (UI handling)
+src/audio/          → AudioController.js (audio and MIDI)
 ```
 
 ---
 
-## 📂 Nueva Estructura
+## 📂 New Structure
 
 ```
 clean/
-├── index.html                    ← HTML limpio y semántico
-├── index-old.html                ← Backup del original
+├── index.html                    ← Clean and semantic HTML
+├── index-old.html                ← Original backup
 │
 ├── src/
-│   ├── styles/                   ← ESTILOS CSS
-│   │   ├── main.css             ← Estilos base y animaciones
+│   ├── styles/                   ← CSS STYLES
+│   │   ├── main.css             ← Base styles and animations
 │   │   ├── ui.css               ← Header, footer, logo
-│   │   └── overlays.css         ← Pantallas y overlays
+│   │   └── overlays.css         ← Screens and overlays
 │   │
-│   ├── ui/                       ← CONTROLADORES UI
-│   │   └── UIController.js      ← Lógica de interfaz
+│   ├── ui/                       ← UI CONTROLLERS
+│   │   └── UIController.js      ← Interface logic
 │   │
-│   ├── audio/                    ← CONTROLADORES AUDIO
-│   │   └── AudioController.js   ← MIDI y SFX
+│   ├── audio/                    ← AUDIO CONTROLLERS
+│   │   └── AudioController.js   ← MIDI and SFX
 │   │
 │   ├── core/
 │   ├── scenes/
@@ -41,13 +41,13 @@ clean/
 │
 └── assets/
     └── images/
-        ├── powerupboard.svg      ← ✨ Nuevo: overlay power-up
-        └── levelup.svg           ← ✨ Nuevo: overlay level-up
+        ├── powerupboard.svg      ← ✨ New: power-up overlay
+        └── levelup.svg           ← ✨ New: level-up overlay
 ```
 
 ---
 
-## 🎯 Archivos CSS
+## 🎯 CSS Files
 
 ### 1. **src/styles/main.css**
 - Estilos generales (`* { }`, `body`)

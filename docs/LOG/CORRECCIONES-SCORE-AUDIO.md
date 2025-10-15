@@ -1,13 +1,13 @@
-# 🔧 Correcciones Críticas - Score y Audio
+# 🔧 Critical Fixes - Score and Audio
 
-## 🐛 Problemas Identificados
+## 🐛 Issues Identified
 
-### 1. **Score no se actualizaba en UI**
-**Error:** El puntaje aumentaba internamente pero no se mostraba en pantalla.
+### 1. **Score not updating in UI**
+**Error:** The score increased internally but wasn't displayed on screen.
 
-**Causa:** Faltaba actualizar el elemento DOM `#score-value`.
+**Cause:** Missing DOM element update for `#score-value`.
 
-**Solución:**
+**Solution:**
 ```javascript
 addScore(points) {
     this.score += points;
@@ -38,19 +38,19 @@ addScore(points) {
 
 **Causa:** Uso incorrecto de la API de MIDIPlayer.
 
-**Métodos incorrectos:**
+**Incorrect methods:**
 ```javascript
-this.midiPlayer.setSong(song);  // ❌ No existe
-this.midiPlayer.loop(true);      // ❌ Nombre incorrecto
+this.midiPlayer.setSong(song);  // ❌ Doesn't exist
+this.midiPlayer.loop(true);      // ❌ Wrong name
 ```
 
-**Métodos correctos:**
+**Correct methods:**
 ```javascript
-this.midiPlayer.song = song;     // ✅ Asignación directa
-this.midiPlayer.setLoop(true);   // ✅ Método correcto
+this.midiPlayer.song = song;     // ✅ Direct assignment
+this.midiPlayer.setLoop(true);   // ✅ Correct method
 ```
 
-**Solución aplicada:**
+**Applied Solution:**
 ```javascript
 request.onload = () => {
     try {
@@ -58,51 +58,51 @@ request.onload = () => {
         const midiFile = new MIDIFile(arrayBuffer);
         const song = midiFile.parseSong();
         
-        // ✅ Usar el método correcto del MIDIPlayer
+        // ✅ Use the correct MIDIPlayer method
         this.midiPlayer.song = song;
         this.midiPlayer.loadPlugin(1, '_tone_0000_JCLive_sf2_file');
         this.midiPlayer.setLoop(true);
         
-        console.log('✅ MIDI cargado correctamente');
+        console.log('✅ MIDI loaded correctly');
     } catch (error) {
-        console.error('❌ Error parseando MIDI:', error);
+        console.error('❌ Error parsing MIDI:', error);
     }
 };
 ```
 
 ---
 
-### 3. **Error al rotar antes de que aparezca pieza**
+### 3. **Error when rotating before piece appears**
 **Error:**
 ```
 Uncaught TypeError: Cannot read properties of null (reading 'rotationState')
     at TetrisGame.rotatePiece
 ```
 
-**Causa:** Usuario presionaba flecha arriba/espacio antes de que spawneara la primera pieza.
+**Cause:** User pressed up arrow/space before the first piece spawned.
 
-**Solución:**
+**Solution:**
 ```javascript
 rotatePiece() {
     if (!this.currentPiece) return;  // ✅ Guard clause
     
     const oldRotation = this.currentPiece.rotationState;
-    // ... resto del código
+    // ... rest of the code
 }
 ```
 
 ---
 
-### 4. **Score no se reseteaba visualmente**
-**Problema:** Al reiniciar el juego, el score interno era 0 pero la UI mostraba el puntaje anterior.
+### 4. **Score not resetting visually**
+**Problem:** When restarting the game, the internal score was 0 but the UI showed the previous score.
 
-**Solución:**
+**Solution:**
 ```javascript
 resetGame() {
     // ...
     this.score = 0;
     
-    // ✅ AGREGADO: Resetear UI
+    // ✅ ADDED: Reset UI
     const scoreElement = document.getElementById('score-value');
     if (scoreElement) {
         scoreElement.textContent = '000000';
@@ -117,64 +117,64 @@ resetGame() {
 
 ---
 
-## ✅ Verificación
+## ✅ Verification
 
-### Logs Esperados (después de la corrección)
+### Expected Logs (after correction)
 ```
-✅ AudioContext para SFX inicializado
-✅ MIDI cargado correctamente
-🎵 Auto-debug MIDI después de 2 segundos:
+✅ AudioContext for SFX initialized
+✅ MIDI loaded correctly
+🎵 Auto-debug MIDI after 2 seconds:
 === MIDI DEBUG ===
 MIDIPlayer exists: true
 midiPlayer instance: MIDIPlayer
 Music started: false
 ...
-▶️ Música iniciada
-🎮 Juego iniciado!
-💰 +100 puntos por bloques correctos  // Score debe actualizarse en UI
+▶️ Music started
+🎮 Game started!
+💰 +100 points for correct blocks  // Score must update in UI
 ```
 
-### Checklist de Pruebas
-- [ ] Score se actualiza en tiempo real
-- [ ] Logo se llena progresivamente
-- [ ] Música MIDI suena al iniciar
-- [ ] No hay errores de `setSong` en consola
-- [ ] Rotar antes de que caiga pieza no causa error
-- [ ] Score se resetea a 000000 al reiniciar
-- [ ] Logo se vacía al reiniciar
+### Test Checklist
+- [ ] Score updates in real time
+- [ ] Logo fills progressively
+- [ ] MIDI music plays on start
+- [ ] No `setSong` errors in console
+- [ ] Rotating before piece falls doesn't cause error
+- [ ] Score resets to 000000 on restart
+- [ ] Logo empties on restart
 
 ---
 
-## 📊 Archivos Modificados
+## 📊 Modified Files
 
 1. **src/audio/AudioController.js**
-   - Cambiado: `setSong()` → `song = `
-   - Cambiado: `loop()` → `setLoop()`
+   - Changed: `setSong()` → `song = `
+   - Changed: `loop()` → `setLoop()`
 
 2. **src/core/TetrisGame.js**
-   - Agregado: Actualización de `#score-value` en `addScore()`
-   - Agregado: Llamada a `updateLogoFill()` en `addScore()`
-   - Agregado: Guard clause en `rotatePiece()`
-   - Agregado: Reset de UI en `resetGame()`
+   - Added: `#score-value` update in `addScore()`
+   - Added: `updateLogoFill()` call in `addScore()`
+   - Added: Guard clause in `rotatePiece()`
+   - Added: UI reset in `resetGame()`
 
 ---
 
-## 🎮 Para Probar
+## 🎮 To Test
 
 ```bash
 cd /Users/mpalenque/tetrisclean/clean
 python3 -m http.server 8000
 ```
 
-Abre: http://localhost:8000
+Open: http://localhost:8000
 
-**Verificar:**
-1. ✅ Música suena al presionar tecla
-2. ✅ Score incrementa visualmente
-3. ✅ Logo se llena con el score
-4. ✅ No hay errores en consola
-5. ✅ Rotar funciona en todo momento
+**Verify:**
+1. ✅ Music plays when pressing key
+2. ✅ Score increments visually
+3. ✅ Logo fills with score
+4. ✅ No errors in console
+5. ✅ Rotation works at all times
 
 ---
 
-**Estado:** ✅ CORREGIDO
+**Status:** ✅ FIXED

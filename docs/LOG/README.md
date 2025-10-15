@@ -1,53 +1,53 @@
-# 🎮 Tetris Game - Versión Standalone con Three.js
+# 🎮 Tetris Game - Standalone Version with Three.js
 
-## 📋 Descripción
-Versión completamente autónoma del juego de Tetris usando Three.js puro (sin Needle Engine).
+## 📋 Description
+Completely autonomous version of Tetris game using pure Three.js (no Needle Engine).
 
-## 🚀 Cómo ejecutar
+## 🚀 How to run
 
-### Opción 1: Live Server (VS Code)
-1. Abre VS Code
-2. Abre el archivo: `/clean/index.html`
-3. Click derecho → "Open with Live Server"
-4. El juego se abrirá en tu navegador
+### Option 1: Live Server (VS Code)
+1. Open VS Code
+2. Open the file: `/clean/index.html`
+3. Right-click → "Open with Live Server"
+4. The game will open in your browser
 
-### Opción 2: Navegador directo
-1. Navega a la carpeta `/clean`
-2. Abre `index.html` directamente en tu navegador
-3. ⚠️ **IMPORTANTE**: Algunos navegadores bloquean módulos ES6 por seguridad. Si ves errores de CORS, usa Live Server.
+### Option 2: Direct browser
+1. Navigate to the `/clean` folder
+2. Open `index.html` directly in your browser
+3. ⚠️ **IMPORTANT**: Some browsers block ES6 modules for security. If you see CORS errors, use Live Server.
 
-### Opción 3: Servidor HTTP simple
+### Option 3: Simple HTTP server
 ```bash
 cd /Users/mpalenque/Desktop/Unitytetris/Needle/newProject/clean
 python3 -m http.server 8000
 ```
-Luego abre: http://localhost:8000
+Then open: http://localhost:8000
 
-## 🎯 Controles
+## 🎯 Controls
 
-- **⬅️ Flecha izquierda**: Mover pieza a la izquierda
-- **➡️ Flecha derecha**: Mover pieza a la derecha
-- **⬇️ Flecha abajo**: Acelerar caída
-- **⬆️ Flecha arriba / Espacio**: Rotar pieza
-- **Cualquier tecla**: Iniciar juego desde pantalla IDLE
+- **⬅️ Left arrow**: Move piece left
+- **➡️ Right arrow**: Move piece right
+- **⬇️ Down arrow**: Accelerate fall
+- **⬆️ Up arrow / Space**: Rotate piece
+- **Any key**: Start game from IDLE screen
 
-## 🎮 Mecánica del juego
+## 🎮 Game mechanics
 
-### Objetivo
-Colocar las piezas de colores en sus zonas correspondientes:
-- 🔴 **Zona Roja** (columnas 0-3): Piezas/bloques rojos
-- 🔵 **Zona Azul** (columnas 4-7): Piezas/bloques azules
-- 🟢 **Zona Verde** (columnas 8-11): Piezas/bloques verdes
+### Objective
+Place colored pieces in their corresponding zones:
+- 🔴 **Red Zone** (columns 0-3): Red pieces/blocks
+- 🔵 **Blue Zone** (columns 4-7): Blue pieces/blocks
+- 🟢 **Green Zone** (columns 8-11): Green pieces/blocks
 
-### Piezas
-- Piezas de 2, 3 y 4 bloques
-- Algunas piezas tienen múltiples colores
-- Piezas multicolor pueden encajar en diferentes zonas
+### Pieces
+- Pieces of 2, 3 and 4 blocks
+- Some pieces have multiple colors
+- Multi-color pieces can fit in different zones
 
-### Sistema de puntuación
-- **100 puntos** por cada sección completada correctamente
-- **Nivel**: Sube cada 10000 puntos
-- **Velocidad**: Aumenta 15% por nivel
+### Scoring system
+- **100 points** for each correctly completed section
+- **Level**: Goes up every 10000 points
+- **Speed**: Increases 15% per level
 - **Modo Bonus**: Se activa cada 10000 puntos durante 5 segundos
 
 ### Modo Bonus 🟡
